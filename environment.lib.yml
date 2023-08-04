@@ -1,0 +1,5 @@
+#@ def environment():
+sample-var-01: ((sample-var-01))
+sample-var-02: ((sample-var-02))
+sample-var-03: ((sample-var-03))
+#@ end

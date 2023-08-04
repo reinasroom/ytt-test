@@ -1,0 +1,11 @@
+#@ def on_failure():  
+put: notify
+params:
+  alert_type: failed
+#@ end
+
+#@ def on_error():  
+put: notify
+params:
+  alert_type: errored
+#@ end

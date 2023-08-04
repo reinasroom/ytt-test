@@ -1,0 +1,5 @@
+sample-var-01: hoge
+sample-var-02: bobobo
+sample-var-03: unagi
+webhook: http://localhost
+limit: 3

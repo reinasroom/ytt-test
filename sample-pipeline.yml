@@ -1,0 +1,55 @@
+#@ load("@ytt:data", "data")
+#@ load("resources.lib.yml", "resource_types", "resources")
+#@ load("environment.lib.yml", "environment")
+#@ load("notification.lib.yml", "on_failure", "on_error")
+
+resource_types: #@ resource_types()
+resources: #@ resources()
+
+jobs: 
+- name: sample-pipeline
+  plan:
+  - get: task
+  - in_parallel:
+      limit: ((limit))
+      steps:
+      - task: hello-world
+        file: task/tasks/hello-world.yml
+        vars: #@ environment()
+        on_failure: #@ on_failure()
+        on_error: #@ on_error()
+      - task: echo-vars
+        file: task/tasks/echo-vars.yml
+        vars: #@ environment()
+        on_failure: #@ on_failure()
+        on_error: #@ on_error()
+      - task: echo-vars
+        file: task/tasks/echo-vars.yml
+        vars: #@ environment()
+        on_failure: #@ on_failure()
+        on_error: #@ on_error()
+      - task: echo-vars
+        file: task/tasks/echo-vars.yml
+        vars: #@ environment()
+        on_failure: #@ on_failure()
+        on_error: #@ on_error()
+      - task: echo-vars
+        file: task/tasks/echo-vars.yml
+        vars: #@ environment()
+        on_failure: #@ on_failure()
+        on_error: #@ on_error()
+      - task: echo-vars
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: busybox }
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              test
+          vars: #@ environment()
+          on_failure: #@ on_failure()
+          on_error: #@ on_error()
